@@ -1,15 +1,12 @@
-import { useLocale, useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { use } from "react";
+import Image from "next/image";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BookOpen, ShieldCheck, HeartHandshake, Smile, ArrowRight, Phone } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import SectionHeading from "@/components/SectionHeading";
 import NoticeCard from "@/components/NoticeCard";
 import SampleTile from "@/components/SampleTile";
 import VideoCard from "@/components/VideoCard";
-import { notices } from "@/content/notices";
-import { albums } from "@/content/gallery";
-import { videos } from "@/content/videos";
+import { getAlbums, getNotices, getVideos } from "@/lib/content";
 import { site } from "@/content/site";
 
 const why = [
@@ -19,12 +16,13 @@ const why = [
   { key: "values", Icon: Smile },
 ] as const;
 
-export default function HomePage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale: l } = use(params);
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: l } = await params;
   setRequestLocale(l);
-  const t = useTranslations("home");
-  const c = useTranslations("common");
-  const locale = useLocale() as "en" | "hi";
+  const t = await getTranslations("home");
+  const c = await getTranslations("common");
+  const locale = l as "en" | "hi";
+  const [notices, albums, videos] = await Promise.all([getNotices(), getAlbums(), getVideos()]);
 
   const stats = [
     { n: site.stats.students, label: t("stats.students") },
@@ -96,39 +94,51 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       </section>
 
       {/* Notices */}
-      <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
-        <SectionHeading title={t("noticesTitle")} href="/notices" linkLabel={c("viewAll")} />
-        <div className="grid gap-4 lg:grid-cols-3">
-          {notices.slice(0, 3).map((n, i) => (
-            <NoticeCard key={n.id} notice={n} isNew={i < 2} />
-          ))}
-        </div>
-      </section>
+      {notices.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+          <SectionHeading title={t("noticesTitle")} href="/notices" linkLabel={c("viewAll")} />
+          <div className="grid gap-4 lg:grid-cols-3">
+            {notices.slice(0, 3).map((n, i) => (
+              <NoticeCard key={n.id} notice={n} isNew={i < 2} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Gallery */}
-      <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
-        <SectionHeading title={t("galleryTitle")} sub={t("gallerySub")} href="/gallery" linkLabel={c("viewAll")} />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-          {albums.slice(0, 6).map((a) => (
-            <Link key={a.id} href="/gallery" className="group relative overflow-hidden rounded-2xl">
-              <SampleTile hue={a.hue} className="aspect-[4/3] transition duration-300 group-hover:scale-105" />
-              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 font-heading text-lg font-semibold text-white">
-                {a.title[locale]}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {albums.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+          <SectionHeading title={t("galleryTitle")} sub={t("gallerySub")} href="/gallery" linkLabel={c("viewAll")} />
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+            {albums.slice(0, 6).map((a) => (
+              <Link key={a.id} href="/gallery" className="group relative overflow-hidden rounded-2xl">
+                {a.images[0] ? (
+                  <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
+                    <Image src={a.images[0]} alt={a.title[locale]} fill sizes="(min-width:768px) 33vw, 50vw" className="object-cover transition duration-300 group-hover:scale-105" />
+                  </div>
+                ) : (
+                  <SampleTile hue={a.hue} className="aspect-[4/3] transition duration-300 group-hover:scale-105" />
+                )}
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 font-heading text-lg font-semibold text-white">
+                  {a.title[locale]}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Videos */}
-      <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
-        <SectionHeading title={t("videosTitle")} href="/videos" linkLabel={c("viewAll")} />
-        <div className="grid gap-5 md:grid-cols-3">
-          {videos.slice(0, 3).map((v) => (
-            <VideoCard key={v.id} video={v} />
-          ))}
-        </div>
-      </section>
+      {videos.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+          <SectionHeading title={t("videosTitle")} href="/videos" linkLabel={c("viewAll")} />
+          <div className="grid gap-5 md:grid-cols-3">
+            {videos.slice(0, 3).map((v) => (
+              <VideoCard key={v.id} video={v} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="mx-auto mt-20 max-w-6xl px-4 sm:px-6">

@@ -13,12 +13,12 @@ npm run build    # production build
 | What | File |
 |---|---|
 | Phone, WhatsApp, email, address, numbers | `src/content/site.ts` |
-| Notices | `src/content/notices.ts` (PDFs go in `public/notices/`) |
-| Photo albums | `src/content/gallery.ts` (photos go in `public/gallery/<album>/`) |
-| Videos | `src/content/videos.ts` (paste the YouTube video ID) |
+| Notices, photo albums, videos | the admin screen (see `studio/README.md`), no code needed |
 | Page text (English / Hindi) | `messages/en.json`, `messages/hi.json` |
 | Logo | replace `public/logo.svg` and `src/app/icon.svg` |
 | Colours | `src/app/globals.css` (`--color-brand-*`, `--color-gold-*`) |
 
-## Next step
-Add a CMS (Sanity or Payload) so the school can post notices, photos and videos from a simple admin screen.
+## Admin screen (Sanity)
+Notices, photo albums and videos are managed in a separate admin screen, built with Sanity (the `studio/` folder).
+Setup steps and the daily-use guide are in `studio/README.md`.
+Until `NEXT_PUBLIC_SANITY_PROJECT_ID` is set, the website shows the sample content in `src/content/`.

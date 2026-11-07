@@ -6,3 +6,7 @@ next-env.d.ts
 .env*.local
 .claude
 *.tsbuildinfo
+studio/dist
+studio/.sanity
+AGENTS.md
+studio/.env
