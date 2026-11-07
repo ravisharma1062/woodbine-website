@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Woodbine Preparatory School, Chhapra",
+    "description": "Woodbine Preparatory School in Chhapra, Bihar. A caring place where young children learn, grow and shine."
+  },
+  "brand": { "name": "Woodbine Preparatory School", "tagline": "Chhapra, Bihar" },
+  "nav": {
+    "home": "Home", "about": "About Us", "notices": "Notices", "gallery": "Gallery",
+    "videos": "Videos", "admissions": "Admissions", "contact": "Contact", "menu": "Menu", "language": "हिन्दी"
+  },
+  "common": {
+    "readMore": "Read more", "viewAll": "View all", "download": "Download", "new": "New",
+    "call": "Call us", "whatsapp": "Chat on WhatsApp", "email": "Email", "address": "Address", "phone": "Phone",
+    "hours": "Office hours", "sample": "Sample content. Replace with real photos."
+  },
+  "home": {
+    "badge": "Admissions open for the new session",
+    "heroTitle": "Where little minds grow big dreams",
+    "heroText": "Woodbine Preparatory School gives young children a safe, joyful and caring place to learn, play and discover.",
+    "ctaAdmission": "Apply for admission",
+    "ctaAbout": "Know our school",
+    "stats": { "students": "Happy students", "teachers": "Caring teachers", "years": "Years of trust", "activities": "Activities a year" },
+    "whyTitle": "Why parents choose Woodbine",
+    "whySub": "We care about learning, safety and good values, all in one place.",
+    "why": {
+      "learn": { "title": "Joyful learning", "text": "Activity based classes that make children curious and confident." },
+      "safe": { "title": "Safe campus", "text": "A secure, clean and friendly place for every child." },
+      "teachers": { "title": "Caring teachers", "text": "Trained teachers who know each child by name." },
+      "values": { "title": "Good values", "text": "Respect, honesty and kindness are part of every day." }
+    },
+    "noticesTitle": "Latest notices",
+    "galleryTitle": "Life at Woodbine",
+    "gallerySub": "Moments from our classrooms, events and celebrations.",
+    "videosTitle": "School videos",
+    "ctaTitle": "Come and visit our school",
+    "ctaText": "Meet our teachers, see the classrooms and ask us anything. We are happy to help."
+  },
+  "about": {
+    "title": "About Us",
+    "intro": "Woodbine Preparatory School is a private primary school in Chhapra, Bihar. We help children take their first steps in learning with love, care and good habits.",
+    "missionTitle": "Our mission",
+    "mission": "To give every child a strong start in education in a happy and safe place.",
+    "visionTitle": "Our vision",
+    "vision": "To raise confident, kind and curious children who are ready for the future.",
+    "principalTitle": "Message from the Principal",
+    "principalText": "Dear parents, every child is special. At Woodbine we work together with you so that your child learns well, stays happy and grows into a good human being. We welcome you to our school family.",
+    "principalName": "Principal, Woodbine Preparatory School",
+    "valuesTitle": "Our values",
+    "values": ["Respect", "Honesty", "Kindness", "Discipline", "Curiosity", "Teamwork"],
+    "facilitiesTitle": "Our facilities",
+    "facilities": ["Bright and airy classrooms", "Play area for children", "Clean drinking water and toilets", "Library corner", "Art and craft room", "Safe and watched campus"]
+  },
+  "notices": {
+    "title": "Notices",
+    "intro": "All school notices, circulars and holiday lists in one place.",
+    "all": "All",
+    "empty": "No notices yet.",
+    "categories": { "general": "General", "exam": "Exam", "holiday": "Holiday", "event": "Event", "fees": "Fees" }
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "intro": "Moments from school life, events and celebrations.",
+    "photos": "photos"
+  },
+  "videos": {
+    "title": "Videos",
+    "intro": "Watch our school activities, events and programmes.",
+    "soon": "Video coming soon"
+  },
+  "admissions": {
+    "title": "Admissions",
+    "intro": "We welcome new families. Admissions are open for the new session.",
+    "stepsTitle": "How to apply",
+    "steps": [
+      { "title": "Visit the school", "text": "Meet our teachers and see the classrooms." },
+      { "title": "Fill the form", "text": "Collect the admission form from the office or send us the enquiry below." },
+      { "title": "Submit documents", "text": "Birth certificate, address proof, parents ID and recent photos." },
+      { "title": "Confirm admission", "text": "Pay the fees and your child is part of the Woodbine family." }
+    ],
+    "docsTitle": "Documents needed",
+    "docs": ["Birth certificate", "Aadhaar card of child and parents", "Address proof", "Two passport size photos", "Previous school report card (if any)"],
+    "formTitle": "Send an enquiry",
+    "form": { "parent": "Parent name", "child": "Child name", "class": "Class for admission", "phone": "Phone number", "message": "Message (optional)", "send": "Send on WhatsApp" }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "intro": "We would love to hear from you.",
+    "mapTitle": "Find us",
+    "openMap": "Open in Google Maps"
+  },
+  "footer": {
+    "about": "A caring place where young children learn, grow and shine.",
+    "links": "Quick links",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+}

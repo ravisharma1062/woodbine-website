@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Woodbine Preparatory School logo (placeholder)">
+  <circle cx="60" cy="60" r="56" fill="#14532d"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#f5b942" stroke-width="2.5"/>
+  <path d="M60 92V52" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M60 78c-14 0-22-8-22-20 14 0 22 8 22 20Z" fill="#86efac"/>
+  <path d="M60 64c14 0 22-8 22-20-14 0-22 8-22 20Z" fill="#bbf7d0"/>
+  <path d="M60 50c-9 0-14-5-14-13 9 0 14 5 14 13Z" fill="#f5b942"/>
+  <circle cx="60" cy="30" r="4" fill="#f5b942"/>
+</svg>
