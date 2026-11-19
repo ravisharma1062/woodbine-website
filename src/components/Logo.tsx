@@ -6,7 +6,7 @@ export default function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link href="/" className="flex items-center gap-3">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo.svg" alt="" width={44} height={44} className="h-11 w-11" />
+      <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/logo.svg`} alt="" width={44} height={44} className="h-11 w-11" />
       <span className="leading-tight">
         <span className={`block font-heading text-base font-bold sm:text-lg ${light ? "text-white" : "text-brand-800"}`}>
           {t("name")}
