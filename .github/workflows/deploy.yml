@@ -5,6 +5,8 @@ on:
     branches: [main]
   schedule:
     - cron: "0 */6 * * *" # rebuild to pick up new notices/albums/videos from Sanity
+  repository_dispatch:
+    types: [sanity-publish] # sent by the Sanity webhook when content is published
   workflow_dispatch:
 
 permissions:
