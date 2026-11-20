@@ -1,7 +1,7 @@
 # Woodbine School admin (Sanity Studio)
 
 This is the screen where school staff add notices, photo albums and videos.
-The website reads them automatically (it checks for new content about once a minute).
+The website is rebuilt automatically after each publish (see "Auto-update" below).
 
 ## One-time setup (done by whoever looks after the website)
 
@@ -21,8 +21,9 @@ Run these in a terminal, inside this `studio` folder.
    (`SANITY_STUDIO_HOST` becomes the admin address. Pick another name if this one is taken.)
 5. Publish the admin screen: `npx sanity deploy`
    The admin address will be `https://woodbine-school.sanity.studio`.
-6. Connect the website: in Render, open the `woodbine-website` service, go to Environment, and add
-   `NEXT_PUBLIC_SANITY_PROJECT_ID` = the project ID. Render redeploys by itself.
+6. Connect the website: the project ID is already saved in the main folder's `.env.production`
+   (`NEXT_PUBLIC_SANITY_PROJECT_ID`). If you ever create a new Sanity project, change it there and push to GitHub.
+   Then make new posts show up by themselves (see "Auto-update" below).
 7. Invite the school staff: https://www.sanity.io/manage > the project > Members > Invite.
    Give them the **Editor** role.
 
@@ -45,7 +46,7 @@ Tips:
 - Hindi and English are both optional, but write at least one. If one is empty the website shows the other.
 - Nothing appears on the website until you click **Publish**.
 - To remove something, open it, click the three dots at the bottom right, and choose **Delete**.
-- Changes show up on the website within about a minute.
+- Changes show up on the website within a few minutes (the site is rebuilt after each publish).
 
 ## What is where
 
@@ -56,3 +57,15 @@ Tips:
 | `schemaTypes/video.ts` | the Video form |
 | `schemaTypes/localized.ts` | the English + Hindi fields |
 | `../src/lib/content.ts` | how the website reads these from Sanity |
+
+## Auto-update (Sanity to Cloudflare)
+
+The website is a static site on Cloudflare Pages, so it must be rebuilt to show new content.
+
+1. Cloudflare dashboard > Workers & Pages > the `woodbine-website` project > Settings > Builds > **Deploy hooks** > Add. Copy the URL.
+2. https://www.sanity.io/manage > the project > API > **Webhooks** > Create webhook:
+   - URL: the Cloudflare deploy hook URL
+   - Method: POST
+   - Trigger on: Create, Update, Delete
+   - Dataset: production
+3. Publish something in the admin. A new build starts in Cloudflare and the site updates in 1 to 3 minutes.

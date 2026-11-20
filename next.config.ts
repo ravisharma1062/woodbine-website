@@ -3,16 +3,16 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-// Set GITHUB_PAGES=true (done by the deploy workflow) to build a static site
-// for GitHub Pages, served from /<repo-name>.
-const isPages = process.env.GITHUB_PAGES === "true";
-const basePath = isPages ? "/woodbine-website" : "";
+// Cloudflare Pages serves the site as plain static files.
+// STATIC_EXPORT=true (set in .env.production) makes `npm run build` create the `out/` folder.
+// `npm run dev` is not affected.
+const isStatic = process.env.STATIC_EXPORT === "true";
 
 const nextConfig: NextConfig = {
-  ...(isPages ? { output: "export", basePath, trailingSlash: true } : {}),
-  env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  ...(isStatic ? { output: "export", trailingSlash: true } : {}),
+  env: { NEXT_PUBLIC_BASE_PATH: "" },
   images: {
-    ...(isPages ? { unoptimized: true } : {}),
+    ...(isStatic ? { unoptimized: true } : {}),
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "cdn.sanity.io" },
